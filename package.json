@@ -1,7 +1,7 @@
 {
   "name": "play_docker",
   "version": "1.0.0",
-  "description": "",
+  "description": "this is hello world app",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

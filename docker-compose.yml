@@ -1,0 +1,34 @@
+version: '3'
+services:
+  db:
+    image: 'postgres:9.4'
+    volumes: 
+      - /var/lib/postgresql/data
+    networks: 
+      - back-end
+  vote:
+    image: 'dockersamples/examplevotingapp_vote:before'
+    ports:
+      - "80:80"
+    deploy:
+      replicas: 2
+    networks:
+      - front-end
+  redis:
+    image: 'redis:3.2'
+    networks:
+      - front-end
+  worker:
+    image: 'dockersamples/examplevotingapp_worker'
+    networks: 
+      - front-end
+      - back-end
+  result:
+    image: 'dockersamples/examplevotingapp_result:before'
+    ports: 
+     - "5001:80"
+    networks: 
+     - back-end
+networks: 
+  front-end:
+  back-end:
